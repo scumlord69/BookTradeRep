@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Books
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Change to table? need 2 columns-->
+  <input type="text" id="searchBar" name="search" placeholder="Search...">
+  <div *ngIf="filters">
+    content goes here (filters like categories)
+  </div>
+  <button ion-button color="Dark" (click)="showFilters()">Filter</button>
+  <div *ngFor="let img of images">
+    <img src="assets/Images/gallery/{{img}}" class="" imageViewer />
+  </div>
+  <div *ngIf="Data !== undefined">
+      <ion-list inset>
+        <button ion-item *ngFor="let book of books" (click)="btnBookDetails(Book)">
+          <img src="" alt="">
+          <h3>{{book.Title}}</h3>
+          <label >{{book.description}}</label>
+        </button>
+      </ion-list>
+    </div>
+
+  </div>
+</ion-content>

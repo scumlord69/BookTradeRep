@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>AccountUpdate</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <img src="" alt="">
+    <br>
+
+    <a href="" (click)="btnAccountDetails">{{Name}} {{Lastname}}</a>
+    
+    <hr/>
+
+<div> 
+    <h2>User Info</h2>
+    <br>
+    <label>FirstName: {{FirstName}} </label>
+    <ion-input [(ngModel)]="somevariabel" type="text">{{FirstName}} </ion-input>
+    <br>
+    <label>LastName: {{LastName}} </label>
+    <ion-input [(ngModel)]="somevariabel" type="text">{{LastName}} </ion-input>
+    <br>
+    <label>Mobile Number: </label>
+    <ion-input [(ngModel)]="somevariabel" type="text">{{MobileNumber}} </ion-input>
+    <br>
+    <label>Email: </label> 
+    <ion-input [(ngModel)]="somevariabel" type="text">{{Email}} </ion-input>
+
+    <br>
+    <button (click)="somefunction()">Cancel</button>
+    <button (click)="somefunction()">Save Changes</button> 
+  </div>
+</ion-content>

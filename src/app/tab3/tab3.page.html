@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<img src="" alt="">
+
+<a href="" (click)="btnAccountDetails">{{Name}} {{Lastname}}</a>
+
+<hr/>
+
+<h2>Your Advertisements</h2>
+<div *ngIf="Data !== undefined">
+  <ion-list inset>
+    <button ion-item *ngFor="let hit of Data" (click)="btnBookDetails(hit)">
+      <img src="" alt="">
+      <h3>{{hit.Title}}</h3>
+      <label >{{hit.description}}</label>
+    </button>
+  </ion-list>
+</div>
+
+
+
+</ion-content>
