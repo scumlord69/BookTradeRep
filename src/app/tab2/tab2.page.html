@@ -10,7 +10,17 @@
   <!-- Change to table? need 2 columns-->
   <input type="text" id="searchBar" name="search" placeholder="Search...">
   <div *ngIf="filters">
-    content goes here (filters like categories)
+    <h1>Filter</h1>
+    <div>
+      <ion-label>Category</ion-label>
+      <ion-select [(ngModel)] = "Category">
+        <!-- <ion-option value ="it">Information Technology</ion-option>
+        <ion-option value ="teacher">Teaching</ion-option> -->
+      </ion-select>
+    </div>
+    <div></div>
+    <div></div>
+    
   </div>
   <button ion-button color="Dark" (click)="showFilters()">Filter</button>
   <div *ngFor="let img of images">
@@ -18,13 +28,11 @@
   </div>
   <div *ngIf="Data !== undefined">
       <ion-list inset>
-        <button ion-item *ngFor="let book of books" (click)="btnBookDetails(Book)">
+        <button ion-item *ngFor="let book of books" (click)="btnBookDetails(book)">
           <img src="" alt="">
           <h3>{{book.Title}}</h3>
-          <label >{{book.description}}</label>
+          <label >{{book.ISBN}}</label>
         </button>
       </ion-list>
     </div>
-
-  </div>
 </ion-content>

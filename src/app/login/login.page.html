@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form (ngSubmit)="Login()" >
+  <ion-list>
+    <ion-item>
+      <ion-label>Username:</ion-label>
+      <ion-input #usernameInput placeholder="Username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password:</ion-label>
+      <ion-input type="password" #passwordInput placeholder="Password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button type="submit">Create new ad</button>
+</form>
+<button>Add image</button>
+
+</ion-content>

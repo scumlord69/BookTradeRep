@@ -23,6 +23,6 @@ export class Tab2Page implements OnInit{
   }
 
   showFilters(){
-    this.filters = true;
+    this.filters = !this.filters;    
   }
 }

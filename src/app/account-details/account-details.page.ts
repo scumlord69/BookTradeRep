@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DBProviderService } from '../dbprovider.service';
 
 @Component({
   selector: 'app-account-details',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountDetailsPage implements OnInit {
 
-  constructor() { }
+  constructor(private service: DBProviderService){ }
 
   ngOnInit() {
+
+  }
+
+public account: any;
+public login: any;
+
+  public getAccountDetails(){
+  this.account =  this.service.getAccount(1); // hårdkådad
+  
   }
 
 }
