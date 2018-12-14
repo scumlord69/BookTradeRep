@@ -7,10 +7,10 @@ import { Datetime } from '@ionic/angular';
   providedIn: 'root'
 })
 export class DBProviderService {
-  
+  date: string
   private bookURL = 'https://bookapi20181214112201.azurewebsites.net/api/books';
-  private loginURL = 'https://bookapi20181214112201.azurewebsites.net/api/Login';
-  private accountURL = 'https://bookapi20181214112201.azurewebsites.net/api/Account';
+  private loginURL = 'https://bookapi20181214112201.azurewebsites.net/api/Logins';
+  private accountURL = 'https://bookapi20181214112201.azurewebsites.net/api/Accounts';
   private advertURL = 'https://bookapi20181214112201.azurewebsites.net/api/Adverts';
   private authorURL = 'https://bookapi20181214112201.azurewebsites.net/api/Authors';
   private authorBookURL = 'https://bookapi20181214112201.azurewebsites.net/api/AuthorBooks';
@@ -25,28 +25,29 @@ export class DBProviderService {
     return this.http.get<any>(this.advertURL)
   }
 
-  public createAd(advertTitle: string, advertDescription: string, advertPrice: Number, advertLocation: string, bookCategory: string, creationDate: Datetime, activeAdvert: number, bookID: number, accountID: number, )
+  public createAd(advertTitle: string, advertDescription: string, advertPrice: Number, advertLocation: string, bookCategory: string,  activeAdvert: number, bookID: number, accountID: number, )
   {
+    this.date = new Date().toISOString().slice(0,16);
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
     let data ={
-      "Title": "trial med ionic",
-      "Description": "Book for sale",
-      "Price": 200,
-      "Location": "Trollhättan",
-      "Category": "Leadership",
-      "CreationDate": "2018-12-04T00:00:00",
+      "Title": advertTitle,
+      "Description": advertDescription,
+      "Price": advertPrice,
+      "Location": advertLocation,
+      "Category": bookCategory,
+      "CreationDate": this.date,
       "ActiveAdvert": true,
-      "BookID": 1,
-      "AccountID": 1
+      "BookID": bookID,
+      "AccountID": accountID,
     }
     this.http.post(this.advertURL, data, httpOptions).subscribe(data => {
       console.log(data['_body']);
     }, error => {
       console.log(error);
     });
-    console.log(advertTitle as string, advertDescription, advertPrice, advertLocation, bookCategory, creationDate, activeAdvert, bookID, accountID)
+    console.log(advertTitle as string, advertDescription, advertPrice, advertLocation, bookCategory,  activeAdvert, bookID, accountID)
     console.log(this.advertURL)
   }
 

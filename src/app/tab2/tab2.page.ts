@@ -8,7 +8,7 @@ import { DBProviderService } from '../dbprovider.service';
 })
 export class Tab2Page implements OnInit{
 
-  books: any;
+  ads: any;
   images = ['imagename.jpg', 'image2.jpg'];
 
   filters: Boolean = false;
@@ -16,8 +16,8 @@ export class Tab2Page implements OnInit{
   constructor(private dbservice: DBProviderService){ }
 
   ngOnInit(){
-    this.dbservice.getBooks().subscribe(x=>{
-      this.books = x as any;
+    this.dbservice.getAds().subscribe(x=>{
+      this.ads = x as any;
       console.log(x)
     }, error => console.error(error));
   }

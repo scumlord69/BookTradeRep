@@ -12,26 +12,39 @@
   <div *ngIf="filters">
     <h1>Filter</h1>
     <div>
+      <ion-item>
       <ion-label>Category</ion-label>
       <ion-select [(ngModel)] = "Category">
-        <!-- <ion-option value ="it">Information Technology</ion-option>
-        <ion-option value ="teacher">Teaching</ion-option> -->
+        <ion-select-option value="it">Information technology</ion-select-option>
+        <!-- <ion-option value="teacher">Teaching</ion-option>
+        <ion-otion value="biology">Biology</ion-otion>
+        <ion-option value="math">Math</ion-option>
+        <ion-option value="linguistics">Linguistics</ion-option>
+        <ion-option value="natural science">Natural science</ion-option>
+        <ion-option value="pe">Physical education</ion-option>
+        <ion-option value="chemistry">Chemistry</ion-option>
+        <ion-option value="physics">Physics</ion-option>
+        <ion-option value="sociology">Sociology</ion-option>
+        <ion-option value="economics">Economics</ion-option>
+        <ion-option value="law">Law</ion-option>                 -->
       </ion-select>
+    </ion-item>
     </div>
     <div></div>
     <div></div>
+ 
     
   </div>
   <button ion-button color="Dark" (click)="showFilters()">Filter</button>
   <div *ngFor="let img of images">
     <img src="assets/Images/gallery/{{img}}" class="" imageViewer />
   </div>
-  <div *ngIf="Data !== undefined">
+  <div *ngIf="ads !== undefined">
       <ion-list inset>
-        <button ion-item *ngFor="let book of books" (click)="btnBookDetails(book)">
+        <button ion-item *ngFor="let ad of ads" (click)="btnBookDetails(ad)">
           <img src="" alt="">
-          <h3>{{book.Title}}</h3>
-          <label >{{book.ISBN}}</label>
+          <h3>{{ad.Title}}</h3>
+          <label >{{ad.Description}}</label>
         </button>
       </ion-list>
     </div>

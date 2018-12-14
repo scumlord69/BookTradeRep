@@ -17,9 +17,10 @@ export class AccountDetailsPage implements OnInit {
 public account: any;
 public login: any;
 
-  public getAccountDetails(){
-  this.account =  this.service.getAccount(1); // hårdkådad
-  
+  public getAccountDetails(){ // borde få IDn via session?
+  this.account =  this.service.getAccount(1); // hårdkådad 
+  this.login = this.service.getLoginDetails(this.account.LoginID);
+
   }
 
 }

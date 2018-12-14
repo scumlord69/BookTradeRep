@@ -47,10 +47,7 @@
         <ion-input  #bookCategory placeholder="Category"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label>Creation date:</ion-label>
-        <ion-input  #creationDate placeholder="Creation date"></ion-input>
-      </ion-item>
+     
 
       <ion-item>
         <ion-label>Active:</ion-label>
@@ -58,7 +55,7 @@
       </ion-item>
       
     </ion-list>
-    <button (click)="submit(advertTitle.value, advertDescription.value, advertPrice.value,  advertLocation.value, bookCategory.value, creationDate.value, activeAdvert.value,  bookID.value, accountID.value)">Create new ad</button>
+    <button (click)="submit(advertTitle.value, advertDescription.value, advertPrice.value,  advertLocation.value, bookCategory.value,  activeAdvert.value,  bookID.value, accountID.value)">Create new ad</button>
   </form>
   <button>Add image</button>
 

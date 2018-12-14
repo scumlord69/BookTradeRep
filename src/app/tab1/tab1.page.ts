@@ -12,7 +12,7 @@ export class Tab1Page implements OnInit{
 
   constructor(private dbservice: DBProviderService){ }
   
-  public submit(advertTitle: string, advertDescription: string, advertPrice: number, advertLocation: string, bookCategory: string, creationDate: Datetime, activeAdvert: number, bookID: number, accountID: number){
-    this.dbservice.createAd(advertTitle, advertDescription, advertPrice,  advertLocation, bookCategory, creationDate, activeAdvert,  bookID, accountID  )
+  public submit(advertTitle: string, advertDescription: string, advertPrice: number, advertLocation: string, bookCategory: string, activeAdvert: number, bookID: number, accountID: number){
+    this.dbservice.createAd(advertTitle, advertDescription, advertPrice,  advertLocation, bookCategory, activeAdvert,  bookID, accountID  )
   }
 }
