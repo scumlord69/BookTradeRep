@@ -7,7 +7,10 @@ import { Datetime } from '@ionic/angular';
   providedIn: 'root'
 })
 export class DBProviderService {
-  date: string
+  private userID: Number;
+  private loginList: any;
+  private date: string;
+  private loginListID;
   private bookURL = 'https://bookapi20181214112201.azurewebsites.net/api/books';
   private loginURL = 'https://bookapi20181214112201.azurewebsites.net/api/Logins';
   private accountURL = 'https://bookapi20181214112201.azurewebsites.net/api/Accounts';
@@ -51,17 +54,15 @@ export class DBProviderService {
     console.log(this.advertURL)
   }
 
-  private loginList: any;
-  public getLogin(username, password){
+
+  public getLogin(username: string, password: string){
    this.loginList = this.http.get<any>(this.loginURL);
    
-   return this.loginList.filter(function (item){
-   if(item.Username == username && password == item.Password)
-   {
-    return item;
-   }
-   });
-   //hämtar alla logins men måste checka efter korrekt login
+  //  this.loginListID = this.loginList.filter(x => x.Username === username && x.Password === password)
+  //  this.userID = this.loginListID.ID
+   console.log(this.userID)
+   return this.loginList.filter(x => x.Username === username && x.Password === password);
+
   }
 
   public getLoginDetails(ID)
@@ -77,4 +78,32 @@ export class DBProviderService {
     this.http.put(this.accountURL + account.ID, account);
   }
 
+  public createLogin(Username: string, Password: string, Email: string,  FirstName: string, LastName: string, MobileNumber: string){
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }
+    let logindata ={
+      "Username": Username,
+      "Password": Password,
+      "E-mail": Email,
+    }
+    this.http.post(this.loginURL, logindata, httpOptions).subscribe(data => {
+      console.log(data['_body']);
+    }, error => {
+      console.log(error);
+    });
+    this.getLogin(Username, Password)
+    let accountdata ={
+      "FirstName": FirstName,
+      "LastName": LastName,
+      "E-mail": Email,
+      "LoginID": this.userID,
+    }
+    
+    this.http.post(this.accountURL, accountdata, httpOptions).subscribe(data => {
+      console.log(data['_body']);
+    }, error => {
+      console.log(error);
+    });
+  }
 }

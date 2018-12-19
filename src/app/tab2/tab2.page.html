@@ -8,27 +8,46 @@
 
 <ion-content>
   <!-- Change to table? need 2 columns-->
-  <input type="text" id="searchBar" name="search" placeholder="Search...">
+  <ion-input type="text" [(ngModel)]="searchText" text-right id="input" ></ion-input>
+  <button ion-button color="dark" (click)="searchAds()">Search</button>
   <div *ngIf="filters">
     <h1>Filter</h1>
     <div>
       <ion-item>
       <ion-label>Category</ion-label>
-      <ion-select [(ngModel)] = "Category">
-        <ion-select-option value="it">Information technology</ion-select-option>
-        <!-- <ion-option value="teacher">Teaching</ion-option>
-        <ion-otion value="biology">Biology</ion-otion>
-        <ion-option value="math">Math</ion-option>
-        <ion-option value="linguistics">Linguistics</ion-option>
-        <ion-option value="natural science">Natural science</ion-option>
-        <ion-option value="pe">Physical education</ion-option>
-        <ion-option value="chemistry">Chemistry</ion-option>
-        <ion-option value="physics">Physics</ion-option>
-        <ion-option value="sociology">Sociology</ion-option>
-        <ion-option value="economics">Economics</ion-option>
-        <ion-option value="law">Law</ion-option>                 -->
+      <ion-select [(ngModel)] = "Category" (ionChange)="AddCategoryValue($event)">
+        <ion-select-option value="Information Technology">Information technology</ion-select-option>
+        <ion-select-option value="Teaching">Teaching</ion-select-option>
+        <ion-select-option value="Biology">Biology</ion-select-option>
+        <ion-select-option value="Math">Math</ion-select-option>
+        <ion-select-option value="Linguistics">Linguistics</ion-select-option>
+        <ion-select-option value="Natural science">Natural science</ion-select-option>
+        <ion-select-option value="Physical education">Physical education</ion-select-option>
+        <ion-select-option value="Chemistry">Chemistry</ion-select-option>
+        <ion-select-option value="Physics">Physics</ion-select-option>
+        <ion-select-option value="Sociology">Sociology</ion-select-option>
+        <ion-select-option value="Economics">Economics</ion-select-option>
+        <ion-select-option value="Law">Law</ion-select-option>   
+        <ion-select-option value="Psychology">Psychology</ion-select-option>   
+        <ion-select-option value="Leadership Studies">Leadership Studies</ion-select-option>         
       </ion-select>
     </ion-item>
+
+    <ion-item>
+        <ion-label color="primary">Price </ion-label>
+        <ion-input placeholder="Text Input" [(ngModel)] = "minPrice" (ionChange)="AddMinValue($event)"></ion-input>
+        <ion-input placeholder="Text Input" [(ngModel)] = "maxPrice" (ionChange)="AddMaxValue($event)"></ion-input>
+   
+      </ion-item>
+
+
+    <ion-item>
+        <ion-label color="primary">City: </ion-label>
+        <ion-input placeholder="Text Input" [(ngModel)] = "Location" (ionChange)="AddLocationValue($event)"></ion-input>
+      </ion-item>
+
+    <button ion-button color="dark" (click)="clearFilters()">Clear filters</button>
+    <button ion-button color="dark" (click)="searchAds()">Apply Filters</button>
     </div>
     <div></div>
     <div></div>
@@ -36,16 +55,23 @@
     
   </div>
   <button ion-button color="Dark" (click)="showFilters()">Filter</button>
-  <div *ngFor="let img of images">
+  <!-- <div *ngFor="let img of images">
     <img src="assets/Images/gallery/{{img}}" class="" imageViewer />
-  </div>
+  </div> -->
   <div *ngIf="ads !== undefined">
       <ion-list inset>
-        <button ion-item *ngFor="let ad of ads" (click)="btnBookDetails(ad)">
-          <img src="" alt="">
+        <button ion-item *ngFor="let ad of filterAds" (click)="ViewDetailedAdvertisement(ad)">
+          <!-- <img src="" alt="https://image.freepik.com/free-vector/404-error-web-template-with-bored-cat_23-2147763346.jpg"> -->
           <h3>{{ad.Title}}</h3>
           <label >{{ad.Description}}</label>
         </button>
       </ion-list>
+      <div *ngIf="filterAds.length == 0">
+          <h2>No advertisement were found</h2>
+        </div>
     </div>
+
+<a href="/Login">login </a>
+
 </ion-content>
+

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label>Username:</ion-label>
+        <ion-input #Username placeholder="Username"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Password:</ion-label>
+        <ion-input  #Password placeholder="Password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>E-mail:</ion-label>
+        <ion-input  #E-mail placeholder="E-mail"></ion-input>
+      </ion-item>
+      
+    </ion-list>
+    <button (click)="submit(advertTitle.value, advertDescription.value, advertPrice.value,  advertLocation.value, bookCategory.value,  activeAdvert.value,  bookID.value, accountID.value)">Create new ad</button>
+  </form>
+</ion-content>
