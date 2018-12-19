@@ -55,7 +55,7 @@ export class DBProviderService {
   }
 
 
-  public getLogin(username: string, password: string){
+  public getLogin(username, password){
    this.loginList = this.http.get<any>(this.loginURL);
    
   //  this.loginListID = this.loginList.filter(x => x.Username === username && x.Password === password)

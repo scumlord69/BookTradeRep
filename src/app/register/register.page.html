@@ -21,8 +21,24 @@
         <ion-label>E-mail:</ion-label>
         <ion-input  #E-mail placeholder="E-mail"></ion-input>
       </ion-item>
+
+      <ion-item>
+        <ion-label>First name</ion-label>
+        <ion-input  #FirstName placeholder="First name"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Last name</ion-label>
+        <ion-input  #LastName placeholder="Last name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mobile number</ion-label>
+        <ion-input  #MobileNumber placeholder="Mobile number"></ion-input>
+      </ion-item>
+
       
     </ion-list>
-    <button (click)="submit(advertTitle.value, advertDescription.value, advertPrice.value,  advertLocation.value, bookCategory.value,  activeAdvert.value,  bookID.value, accountID.value)">Create new ad</button>
+    <button (click)="submit(Username.value, Password.value, E-mail.value, FirstName.value, LastName.value, MobileNumber.value)">Register account</button>
   </form>
 </ion-content>
